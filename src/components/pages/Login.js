@@ -65,7 +65,8 @@ export default function Login(){
             <Form onSubmit={handleSubmit}>
                 {loading ? <Spinner /> : 
                     <>
-                        <span>Login if you have an account</span>
+                        <p>Login if you have an account <small>(Click on the 'Login' button to see the animation)</small></p>
+                        
                         <Input 
                             value={formFields.username}
                             onChange={handleInputChange}

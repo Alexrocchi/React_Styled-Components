@@ -14,6 +14,13 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.bodyFontColor};
     font-family: 'Kaushan Script';
   }
+  a{
+    color: ${props => props.theme.bodyFontColor};
+    font-weight: bold;
+  }
+  p > small{
+    display: block;
+  }
 `;
 
 function App() {
