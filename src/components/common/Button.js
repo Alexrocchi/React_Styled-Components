@@ -3,7 +3,7 @@ import styled, {css} from 'styled-components';
 /* Button -> Remember that all React Components have to start with a Capital letter */
 const Button = styled.button`
     color: white;
-    background-color: ${(props) => props.secondary ? '#fdd54f' : '#f8049c'};
+    background-color: ${(props) => props.secondary ? props => props.theme.secondaryColor : props => props.theme.primaryColor};
     font-weight: bold;
     cursor: pointer;
     ${(props) => props.large ? css`

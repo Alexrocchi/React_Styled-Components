@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
-import styled from "styled-components";
+import React, {useState, useContext} from 'react';
+import styled, {ThemeContext} from "styled-components";
 import { Link as ReactRouterDomLink, useLocation } from "react-router-dom";
+import { Toggle } from './Toggle';
 
 const HeaderWrapper = styled.header`
     height: 60px;
@@ -10,8 +11,8 @@ const HeaderWrapper = styled.header`
     padding: 0 16px;
     position: fixed;
     top: 0;
-    background-image: linear-gradient(to right, #f8049c, #fdd54f);
-    border-bottom: 3px solid #fdd54f;
+    background-image: linear-gradient(to right, ${props => props.theme.primaryColor}, ${props => props.theme.secondaryColor});
+    border-bottom: 3px solid ${props => props.theme.secondaryColor};
 `;
 
 const Menu = styled.nav`
@@ -23,8 +24,8 @@ const Menu = styled.nav`
     left: 0;
     pad: 8px;
     box-sizing: border-box;
-    border-bottom: 3px solid #fdd54f;
-    background-color: #fff;
+    border-bottom: 3px solid ${props => props.theme.secondaryColor};
+    background-color: ${props => props.theme.bodyBackgroundColor};
     
     @media(width >= 768px){
         position: relative;
@@ -59,7 +60,7 @@ const StyledLink = styled(Link)`
     box-sizing: border-box;
     margin: 0 auto;
     font-weight: ${p => p.isActive ? 'bold' : 'normal'};
-    color: #000;
+    color: ${props => props.theme.bodyFontColor};
 `;
 
 const MobileMenuIcon = styled.div`
@@ -69,7 +70,7 @@ const MobileMenuIcon = styled.div`
     padding: 5px;
     > div{
         height: 3px;
-        background-color: #000;
+        background-color: ${props => props.theme.bodyFontColor};
         margin: 5px 0;
         width: 100%;
     }
@@ -82,6 +83,8 @@ const MobileMenuIcon = styled.div`
 export function Header() {
     const {pathname} = useLocation();
     const [menuOpen, setMenuOpen] = useState(false);
+    const {id, setTheme} = useContext(ThemeContext);
+
     return (
         <HeaderWrapper>
             <MobileMenuIcon onClick={() => setMenuOpen(s => !s)}>
@@ -92,6 +95,7 @@ export function Header() {
             <Menu open={menuOpen}>
                 <StyledLink to={"/"} isActive={pathname === '/'}>Home</StyledLink>
                 <StyledLink to={"/login"} isActive={pathname === '/login'}>Login</StyledLink>
+                <Toggle isActive={id === 'dark'} onToggle={setTheme}></Toggle>
             </Menu>
         </HeaderWrapper>
     )
