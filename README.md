@@ -18,3 +18,7 @@ npm install styled-components
 
 ## For creating and routing our pages 
 npm install react-router-dom
+
+## Type safety
+npm install prop-types
+https://github.com/facebook/prop-types
