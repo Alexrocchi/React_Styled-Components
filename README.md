@@ -1,4 +1,4 @@
-[![My Skills](https://skills.thijs.gg/icons?i=styledcomponents,react)](https://react-styled-components-amber.vercel.app/) 
+[![My Skills](https://skillicons.dev/icons?i=styledcomponents,react)](https://react-styled-components-amber.vercel.app/) 
 </br>
 # Styled Components V5
 
